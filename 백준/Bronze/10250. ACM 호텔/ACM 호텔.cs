@@ -14,14 +14,18 @@ namespace algorithm
             for (int i = 0; i < T; i++)
             {
                 int[] input = ReadLine().Split(' ').Select(int.Parse).ToArray();
+
+                int H = input[0];
+                int W = input[1];
+                int N = input[2];
                 int result = 0;
                 bool flag = false;
 
-                for (int j = 1; j <= input[1]; j++)
-                {// W
-                    for (int k = 1; k <= input[0]; k++)
-                    {// H
-                        if (input[2] - 1 <= 0)
+                for (int j = 1; j <= W; j++)
+                {
+                    for (int k = 1; k <= H; k++)
+                    {
+                        if (N - 1 <= 0)
                         {
                             flag = true;
                             result = int.Parse($"{k}{j.ToString("D2")}");
@@ -29,7 +33,7 @@ namespace algorithm
                         }
                         else
                         {
-                            input[2] -= 1;
+                            N -= 1;
                         }
                     }
 
