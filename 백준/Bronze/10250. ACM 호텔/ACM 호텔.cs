@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using static System.Console;
 
 namespace algorithm
 {
@@ -8,40 +7,24 @@ namespace algorithm
     {
         static void Main(string[] args)
         {
-            int T = int.Parse(ReadLine());
+            int T = int.Parse(Console.ReadLine());
+            int x = 0;
+            int y = 0;
+            int[] hwn;
 
-            // H 층 수, W 층의 방 수, N 몇 번째 손님
-            for (int i = 0; i < T; i++)
+            for (; T > 0; T--)
             {
-                int[] input = ReadLine().Split(' ').Select(int.Parse).ToArray();
+                hwn = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
 
-                int H = input[0];
-                int W = input[1];
-                int N = input[2];
-                int result = 0;
-                bool flag = false;
+                y = hwn[2] % hwn[0];
+                x = hwn[2] / hwn[0];
 
-                for (int j = 1; j <= W; j++)
-                {
-                    for (int k = 1; k <= H; k++)
-                    {
-                        if (N - 1 <= 0)
-                        {
-                            flag = true;
-                            result = int.Parse($"{k}{j.ToString("D2")}");
-                            break;
-                        }
-                        else
-                        {
-                            N -= 1;
-                        }
-                    }
+                if (y == 0)
+                    y = hwn[0];
+                else
+                    x += 1;
 
-                    if (flag == true)
-                        break;
-                }
-
-                WriteLine(result);
+                Console.WriteLine(y * 100 + x);
             }
         }
     }
