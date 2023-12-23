@@ -10,11 +10,7 @@ namespace algorithm
         static void Main(string[] args)
         {
             int N = int.Parse(ReadLine());
-            List<int> list = new List<int>();
-            int[] num = ReadLine().Split(' ').Select(int.Parse).ToArray();
-
-            for (int i = 0; i < N; i++)
-                list.Add(num[i]);
+            List<int> list = new List<int>(Array.ConvertAll(ReadLine().Split(), int.Parse));
 
             Write($"{list.Min()} {list.Max()}");
         }
